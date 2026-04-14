@@ -1,16 +1,17 @@
-# sample-node-ci
+# github-actions-jenkins-nodejs
 
-[![CI](https://github.com/<your-username>/sample-node-ci/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-username>/sample-node-ci/actions/workflows/ci.yml)
+[![CI](https://github.com/robanb/github-actions-jenkins-nodejs/actions/workflows/ci.yml/badge.svg)](https://github.com/robanb/github-actions-jenkins-nodejs/actions/workflows/ci.yml)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D18-339933?logo=node.js&logoColor=white)](https://nodejs.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
 
-A reference **Node.js + Express** service built for the *DevOps Engineer
-Certification Course* to demonstrate end-to-end **GitHub Actions CI/CD**
-practices: linting, automated testing on a Node.js version matrix, coverage
-reporting, and workflow artifacts.
+A hands-on **Node.js + Express** lab built for the *DevOps Engineer
+Certification Course* that demonstrates end-to-end **CI/CD pipelines with
+both GitHub Actions and Jenkins** against the same codebase: linting,
+automated testing on a Node.js version matrix, coverage reporting, and build
+artifacts.
 
 The application itself is intentionally small so the focus stays on the
-**pipeline**, not on business logic.
+**pipelines**, not on business logic.
 
 ---
 
@@ -36,19 +37,23 @@ The application itself is intentionally small so the focus stays on the
 
 ## Overview
 
-`sample-node-ci` exposes a tiny HTTP API with three endpoints and a set of
-cross-cutting concerns (JSON middleware, centralized error handling, graceful
-shutdown). Every change pushed to the repository is validated by a GitHub
-Actions workflow that runs ESLint and executes the Jest test suite across
-multiple Node.js versions.
+`github-actions-jenkins-nodejs` exposes a tiny HTTP API with three endpoints
+and a set of cross-cutting concerns (JSON middleware, centralized error
+handling, graceful shutdown). Every change pushed to the repository is
+validated by **two parallel pipelines** — a GitHub Actions workflow and a
+Jenkins declarative pipeline — that both run ESLint and execute the Jest
+test suite across multiple Node.js versions.
 
 **Learning goals**
 
 1. Structure a Node.js project using modular routes and middleware.
-2. Author a GitHub Actions workflow with multiple jobs, caching, and a build
-   matrix.
-3. Use coverage thresholds to enforce quality gates.
-4. Publish and consume pipeline artifacts.
+2. Author a **GitHub Actions** workflow with multiple jobs, caching, and a
+   build matrix.
+3. Author an equivalent **Jenkins declarative pipeline** and run it against
+   a local Jenkins LTS instance.
+4. Compare the two tools side-by-side on the same codebase.
+5. Use coverage thresholds to enforce quality gates.
+6. Publish and consume pipeline artifacts.
 
 ## Tech Stack
 
@@ -59,15 +64,19 @@ multiple Node.js versions.
 | Test runner   | Jest 29                 |
 | HTTP testing  | Supertest 7             |
 | Linter        | ESLint 9 (flat config)  |
-| CI            | GitHub Actions          |
+| CI (hosted)   | GitHub Actions          |
+| CI (self-hosted) | Jenkins (declarative pipeline) |
 
 ## Project Structure
 
 ```text
-sample-node-ci/
+github-actions-jenkins-nodejs/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml                  # GitHub Actions pipeline
+├── Jenkinsfile                     # Jenkins declarative pipeline (coming)
+├── jenkins/                        # Local Jenkins LTS via Docker (coming)
+│   └── docker-compose.yml
 ├── src/
 │   ├── app.js                      # Express app factory
 │   ├── server.js                   # Runtime entry point
@@ -105,8 +114,8 @@ sample-node-ci/
 
 ```bash
 # Clone
-git clone https://github.com/<your-username>/sample-node-ci.git
-cd sample-node-ci
+git clone https://github.com/robanb/github-actions-jenkins-nodejs.git
+cd github-actions-jenkins-nodejs
 
 # Install dependencies
 npm ci
@@ -460,14 +469,14 @@ This mirrors what CI does and is the fastest way to avoid red pipelines.
 
 ## Pushing to GitHub
 
-1. Create a new empty repository on GitHub (e.g. `sample-node-ci`).
+1. Create a new empty repository on GitHub (e.g. `github-actions-jenkins-nodejs`).
 2. From this folder:
    ```bash
    git init
    git add .
    git commit -m "Initial commit"
    git branch -M main
-   git remote add origin https://github.com/<your-username>/sample-node-ci.git
+   git remote add origin https://github.com/robanb/github-actions-jenkins-nodejs.git
    git push -u origin main
    ```
 3. Open the **Actions** tab on GitHub — you should see the CI workflow

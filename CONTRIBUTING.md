@@ -1,7 +1,8 @@
 # Contributing
 
-Thank you for taking an interest in improving `sample-node-ci`! This project
-exists to teach GitHub Actions CI/CD, so contributions that make the pipeline
+Thank you for taking an interest in improving `github-actions-jenkins-nodejs`!
+This project exists to teach CI/CD with both **GitHub Actions** and **Jenkins**
+against the same Node.js codebase, so contributions that make either pipeline
 clearer, more idiomatic, or better documented are especially welcome.
 
 ## Development Setup

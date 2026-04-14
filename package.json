@@ -1,7 +1,7 @@
 {
-  "name": "sample-node-ci",
+  "name": "github-actions-jenkins-nodejs",
   "version": "1.0.0",
-  "description": "A reference Node.js + Express service demonstrating GitHub Actions CI/CD for the DevOps Engineer Certification Course.",
+  "description": "A hands-on, open-source Node.js + Express lab demonstrating CI/CD pipelines with both GitHub Actions and Jenkins against the same codebase.",
   "main": "src/server.js",
   "engines": {
     "node": ">=18.0.0"
@@ -18,12 +18,22 @@
     "nodejs",
     "express",
     "github-actions",
+    "jenkins",
     "ci-cd",
     "devops",
+    "pipeline",
     "jest"
   ],
-  "author": "DevOps Engineer Certification Course",
+  "author": "Roba Nath Basnet",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robanb/github-actions-jenkins-nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/robanb/github-actions-jenkins-nodejs/issues"
+  },
+  "homepage": "https://github.com/robanb/github-actions-jenkins-nodejs#readme",
   "dependencies": {
     "express": "^4.19.2"
   },
