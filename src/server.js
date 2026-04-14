@@ -3,7 +3,7 @@ const app = require('./app');
 const PORT = Number(process.env.PORT) || 3000;
 
 const server = app.listen(PORT, () => {
-  console.log(`sample-node-ci listening on port ${PORT}`);
+  console.log(`nodejs-ci-demo listening on port ${PORT}`);
 });
 
 function shutdown(signal) {

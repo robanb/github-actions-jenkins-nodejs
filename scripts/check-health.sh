@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# check-health.sh — System and service health inspection for sample-node-ci.
+# check-health.sh — System and service health inspection for nodejs-ci-demo.
 #
 # Collects host specs, verifies Node.js / npm meet the project's minimum
 # versions (as declared in package.json `engines.node`), and probes the
@@ -90,7 +90,7 @@ version_ge() {
 }
 
 # ---------- banner ----------
-printf '%s%s sample-node-ci :: health check %s\n' "${C_BOLD}" "${C_CYAN}" "${C_RESET}"
+printf '%s%s nodejs-ci-demo :: health check %s\n' "${C_BOLD}" "${C_CYAN}" "${C_RESET}"
 printf '%sroot:%s %s\n' "${C_DIM}" "${C_RESET}" "${PROJECT_ROOT}"
 printf '%starget:%s %s\n' "${C_DIM}" "${C_RESET}" "${BASE_URL}"
 

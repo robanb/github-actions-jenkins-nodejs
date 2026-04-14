@@ -58,7 +58,7 @@ if [[ ${DEEP} -eq 1 ]]; then
   TARGETS+=("package-lock.json")
 fi
 
-printf '%s%s sample-node-ci :: clean %s\n' "${C_BOLD}" "${C_CYAN}" "${C_RESET}"
+printf '%s%s nodejs-ci-demo :: clean %s\n' "${C_BOLD}" "${C_CYAN}" "${C_RESET}"
 printf '%sroot:%s %s\n' "${C_DIM}" "${C_RESET}" "${PROJECT_ROOT}"
 [[ ${DRY_RUN} -eq 1 ]] && printf '%s(dry run — no files will be removed)%s\n' "${C_YELLOW}" "${C_RESET}"
 printf '\n'

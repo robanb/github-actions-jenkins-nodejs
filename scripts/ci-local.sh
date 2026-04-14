@@ -58,7 +58,7 @@ run_step() {
   fi
 }
 
-printf '%s%s sample-node-ci :: local CI %s\n' "${C_BOLD}" "${C_CYAN}" "${C_RESET}"
+printf '%s%s nodejs-ci-demo :: local CI %s\n' "${C_BOLD}" "${C_CYAN}" "${C_RESET}"
 
 if [[ ${SKIP_INSTALL} -eq 0 ]]; then
   run_step "Install dependencies (npm ci)" npm ci

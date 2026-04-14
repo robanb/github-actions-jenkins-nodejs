@@ -10,7 +10,7 @@ describe('GET /', () => {
     expect(res.status).toBe(200);
     expect(res.body).toEqual({
       message: 'Hello, CI/CD!',
-      service: 'sample-node-ci',
+      service: 'nodejs-ci-demo',
       version,
     });
   });

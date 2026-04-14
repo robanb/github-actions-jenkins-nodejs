@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# smoke-test.sh — End-to-end smoke test against a running sample-node-ci.
+# smoke-test.sh — End-to-end smoke test against a running nodejs-ci-demo.
 #
 # Exercises each public endpoint and verifies HTTP status, content type,
 # and a key field in the JSON body. Intended to be run post-deploy or
@@ -48,7 +48,7 @@ PASSED=0
 FAILED=0
 
 BASE_URL="${BASE_URL%/}"
-printf '%s%s sample-node-ci :: smoke test %s\n' "${C_BOLD}" "${C_CYAN}" "${C_RESET}"
+printf '%s%s nodejs-ci-demo :: smoke test %s\n' "${C_BOLD}" "${C_CYAN}" "${C_RESET}"
 printf '%starget:%s %s\n\n' "${C_DIM}" "${C_RESET}" "${BASE_URL}"
 
 # Run one assertion.

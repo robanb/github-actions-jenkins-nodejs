@@ -7,7 +7,7 @@ const router = Router();
 router.get('/', (req, res) => {
   res.json({
     message: 'Hello, CI/CD!',
-    service: 'sample-node-ci',
+    service: 'nodejs-ci-demo',
     version,
   });
 });
