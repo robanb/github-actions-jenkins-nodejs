@@ -1,8 +1,11 @@
 node_modules/
 coverage/
+reports/
+test-node-*/
 .env
 .env.*
 !.env.example
+jenkins/.env
 *.log
 npm-debug.log*
 .DS_Store

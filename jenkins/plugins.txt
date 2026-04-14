@@ -1,0 +1,25 @@
+# Jenkins plugin list for github-actions-jenkins-nodejs.
+# Read at image-build time by jenkins-plugin-cli (see jenkins/Dockerfile).
+# One plugin id per line. Blank lines and comments are ignored.
+
+# Pipeline core
+workflow-aggregator
+pipeline-stage-view
+
+# Source control
+git
+github
+
+# Build tooling
+nodejs
+
+# Configuration as Code (bootstraps admin user + Node tool installs)
+configuration-as-code
+
+# Logs and workspace cleanup
+timestamper
+ansicolor
+ws-cleanup
+
+# Test reporting
+junit
