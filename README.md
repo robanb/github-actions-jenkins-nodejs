@@ -74,9 +74,17 @@ github-actions-jenkins-nodejs/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml                  # GitHub Actions pipeline
-├── Jenkinsfile                     # Jenkins declarative pipeline (coming)
-├── jenkins/                        # Local Jenkins LTS via Docker (coming)
-│   └── docker-compose.yml
+├── Jenkinsfile                     # Jenkins declarative pipeline
+├── jenkins/                        # Local Jenkins LTS via Docker
+│   ├── Dockerfile                  # jenkins/jenkins:lts-jdk17 + plugins
+│   ├── docker-compose.yml          # one-command bring-up
+│   ├── plugins.txt                 # pinned plugin manifest
+│   ├── casc.yaml                   # Configuration-as-Code (admin + Node)
+│   └── .env.example                # template for admin credentials
+├── docs/
+│   ├── README.md                   # docs index
+│   ├── GITHUB-ACTIONS.md           # GitHub Actions execution guide
+│   └── JENKINS.md                  # Jenkins execution guide
 ├── src/
 │   ├── app.js                      # Express app factory
 │   ├── server.js                   # Runtime entry point
@@ -109,6 +117,7 @@ github-actions-jenkins-nodejs/
 - **Node.js** 18 or newer (20 LTS recommended — pinned in `.nvmrc`)
 - **npm** 9+ (ships with Node.js 18/20)
 - A **GitHub account** to host the repository and run the Actions workflow
+- **Docker** + **Docker Compose v2** to run the local Jenkins stack (optional — only for the Jenkins half of the lab)
 
 ## Getting Started
 
@@ -331,10 +340,31 @@ npm run lint       # check
 npm run lint:fix   # auto-fix
 ```
 
-## CI/CD Pipeline
+## CI/CD Pipelines
 
-The pipeline lives in [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
-and runs on every `push` and `pull_request` targeting `main`, plus manual
+This repository ships **two equivalent pipelines** against the same codebase
+so you can compare the two tools side-by-side:
+
+| Tool           | Pipeline file                                       | Detailed guide                                |
+| -------------- | --------------------------------------------------- | --------------------------------------------- |
+| GitHub Actions | [`.github/workflows/ci.yml`](./.github/workflows/ci.yml) | [`docs/GITHUB-ACTIONS.md`](./docs/GITHUB-ACTIONS.md) |
+| Jenkins        | [`Jenkinsfile`](./Jenkinsfile)                      | [`docs/JENKINS.md`](./docs/JENKINS.md)        |
+
+Both pipelines run the same three commands — `npm ci`, `npm run lint`, and
+`npm run test:coverage` — against Node 18 and Node 20, and publish a coverage
+artifact. See [`docs/JENKINS.md` §12](./docs/JENKINS.md#12-github-actions-vs-jenkins--side-by-side)
+for the full side-by-side comparison table.
+
+For the local Jenkins LTS stack (one-command bring-up via Docker Compose),
+see the [`jenkins/`](./jenkins) directory and
+[`docs/JENKINS.md` §4](./docs/JENKINS.md#4-bringing-up-local-jenkins).
+
+---
+
+### GitHub Actions pipeline
+
+The GitHub Actions workflow at [`.github/workflows/ci.yml`](./.github/workflows/ci.yml)
+runs on every `push` and `pull_request` targeting `main`, plus manual
 `workflow_dispatch` triggers.
 
 ```text

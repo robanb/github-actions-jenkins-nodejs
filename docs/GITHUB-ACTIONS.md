@@ -1,4 +1,4 @@
-# CI/CD Execution Guide
+# GitHub Actions Execution Guide
 
 A detailed, step-by-step reference for running, inspecting, and extending the
 GitHub Actions pipeline defined in this repository.
@@ -6,6 +6,11 @@ GitHub Actions pipeline defined in this repository.
 This guide covers **what** the pipeline does, **how** to execute it (both on
 GitHub and locally), and **how** to interpret its results. It is meant to be
 read top-to-bottom the first time and used as a reference afterwards.
+
+> **Looking for the Jenkins equivalent?** This repo ships an equivalent
+> Jenkins declarative pipeline (`Jenkinsfile`) and a local Jenkins LTS stack
+> under `jenkins/`. See [`docs/JENKINS.md`](./JENKINS.md) for the full
+> walkthrough and a side-by-side comparison table.
 
 ---
 
