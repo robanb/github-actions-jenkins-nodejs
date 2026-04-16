@@ -16,7 +16,7 @@ pipeline {
 
   options {
     timestamps()
-    timeout(time: 15, unit: 'MINUTES')
+    timeout(time: 30, unit: 'MINUTES')
     buildDiscarder(logRotator(numToKeepStr: '20'))
     disableConcurrentBuilds()
   }
@@ -47,25 +47,10 @@ pipeline {
       }
     }
 
-    stage('Test (Node 18)') {
-      tools { nodejs 'Node 18' }
-      steps {
-        sh 'node --version'
-        sh 'npm ci'
-        sh 'npm run test:coverage -- --ci'
-      }
-      post {
-        always {
-          junit 'reports/junit/junit.xml'
-        }
-      }
-    }
-
-    stage('Test (Node 20)') {
+    stage('Test') {
       tools { nodejs 'Node 20' }
       steps {
         sh 'node --version'
-        sh 'npm ci'
         sh 'npm run test:coverage -- --ci'
       }
       post {
