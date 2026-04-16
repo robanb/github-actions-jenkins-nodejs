@@ -6,7 +6,7 @@ const router = Router();
 
 router.get('/', (req, res) => {
   res.json({
-    message: 'Hello, CI/CD!',
+    message: 'Hello, CI/CD! Running on self-hosted runner.',
     service: 'nodejs-ci-demo',
     version,
   });
